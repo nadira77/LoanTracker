@@ -59,13 +59,16 @@ public abstract class LoanItems {
     }
 
     //Abstrakte metoder
+
     public abstract String getDecription();
 
     public abstract double feeAmount();
 
     //toString() metode
     @Override
-
+    public String toString() {
+        return "Type: " + type + " | Title: " + title + " | Price: " + price + " | Year: " + year + " | Loan days: " + loandays;
+    }
 
 
 }
