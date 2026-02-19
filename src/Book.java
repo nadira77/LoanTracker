@@ -8,7 +8,7 @@ public class Book extends LoanItems {
     }
 
     @Override
-    public String getDecription() {
+    public String getDescription() {
         return this.getType() + ": " + this.getTitle() + "(" + this.getYear() + ") by: " + author + " at price: $" + this.getPrice() + ". Days loaned: " + this.getLoandays();
     }
 
