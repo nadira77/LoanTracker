@@ -17,4 +17,10 @@ public class Book extends LoanItems {
         return this.getPrice() * 0.3;
     }
 
+
+    @Override
+    public String toString() {
+        return super.toString() + " | Author: " + author;
+    }
+
 }
