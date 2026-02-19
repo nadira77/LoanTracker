@@ -16,6 +16,11 @@ public abstract class LoanItems {
 
     }
 
+    //Metode til at beregne fee. Encapsulation: Protected gør så både klasser + subklasser kan bruge denne metode
+    protected double calculateFee (double rate) {
+        return this.price * rate * this.loandays;
+    }
+
     //Getters and setters
 
     public String getType(){

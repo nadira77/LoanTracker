@@ -14,7 +14,7 @@ public class ElectronicKit extends LoanItems {
 
     @Override
     public double feeAmount() {
-        return this.getPrice() * 0.3;
+        return calculateFee(0.7);
     }
 
 

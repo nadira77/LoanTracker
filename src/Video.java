@@ -19,7 +19,7 @@ public class Video extends LoanItems {
 
     @Override
     public double feeAmount() {
-        return this.getPrice() * 0.5;
+        return calculateFee(0.5);
     }
 
 }

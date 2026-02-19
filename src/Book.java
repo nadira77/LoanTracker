@@ -12,9 +12,10 @@ public class Book extends LoanItems {
         return this.getType() + ": " + this.getTitle() + "(" + this.getYear() + ") by: " + author + " at price: $" + this.getPrice() + ". Days loaned: " + this.getLoandays();
     }
 
+    // Metoden fra LoanItems bliver genbrugt her
     @Override
     public double feeAmount() {
-        return this.getPrice() * 0.3;
+        return calculateFee(0.3);
     }
 
 
