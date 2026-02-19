@@ -8,6 +8,11 @@ public class Video extends LoanItems {
     }
 
     @Override
+    public String getDecription() {
+        return this.getType() + ": " + this.getTitle() + "(" + this.getYear() + ") runtime: " + runtime + " at price: $" + this.getPrice() + ". Days loaned: " + this.getLoandays();
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " runtime: " + runtime;
     }
