@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-import static java.lang.IO.println;
 
 public class LoanSystem {
     //*
@@ -18,29 +17,33 @@ public class LoanSystem {
 
         System.out.println("Hvor mange items vil du låne?");
         int amount = sc.nextInt();
+        sc.nextLine();
 
         LoanItems[] items = new LoanItems[amount];
 
         for (int i = 0; i < amount; i++) {
 
-            System.out.println("\nEnter Type (Book/Video/Elektronickit) ");
-            String type = sc.next();
+            System.out.println("\nEnter type (Book/Video/Electronic Kit) ");
+            String type = sc.nextLine();
 
-            System.out.println("Enter Title");
-            String title = sc.next();
+            System.out.println("Enter title: ");
+            String title = sc.nextLine();
 
-            System.out.print("Enter Price: ");
+            System.out.print("Enter price: ");
             double price = sc.nextDouble();
+            sc.nextLine();
 
-            System.out.print("Enter Year: ");
+            System.out.print("Enter year: ");
             int year = sc.nextInt();
+            sc.nextLine();
 
-            System.out.print("Enter Loandays");
+            System.out.print("Enter loan days: ");
             int loanDays = sc.nextInt();
+            sc.nextLine();
 
             //opret objekt
             if (type.equalsIgnoreCase("Book")) {
-                System.out.println("Enter Author");
+                System.out.print("Enter author: ");
                 String author = sc.next();
                 items[i] = new Book(type, title, price, year, loanDays, author);
             } else if (type.equalsIgnoreCase("Video")) {
@@ -55,19 +58,14 @@ public class LoanSystem {
         }
 
         System.out.println("---- Before sorting ----");
-        println(items);
+        print(items);
         sortByPrice(items);
 
         System.out.println("\n---- After sorting ----");
         print(items);
+
         sc.close();
 
-        // Udskriv alle items
-
-        System.out.println("\n--- Lånte items ---");
-        for (LoanItems item : items) {
-            System.out.println(item);
-        }
     }
 
     public static void print(LoanItems[] arr) {
