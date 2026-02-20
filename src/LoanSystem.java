@@ -23,10 +23,10 @@ public class LoanSystem {
 
         for (int i = 0; i < amount; i++) {
 
-            System.out.println("\nEnter type (Book/Video/Electronic Kit) ");
+            System.out.print("Enter type (Book/Video/Electronic Kit) ");
             String type = sc.nextLine();
 
-            System.out.println("Enter title: ");
+            System.out.print("Enter title: ");
             String title = sc.nextLine();
 
             System.out.print("Enter price: ");
@@ -44,15 +44,16 @@ public class LoanSystem {
             //opret objekt
             if (type.equalsIgnoreCase("Book")) {
                 System.out.print("Enter author: ");
-                String author = sc.next();
+                String author = sc.nextLine();
                 items[i] = new Book(type, title, price, year, loanDays, author);
             } else if (type.equalsIgnoreCase("Video")) {
-                System.out.println("Enter Runtime");
+                System.out.println("Enter runtime");
                 double runTime = sc.nextDouble();
+                sc.nextLine();
                 items[i] = new Video(type, title, price, year, loanDays, runTime);
             } else {
                 System.out.println("Enter model");
-                String model = sc.next();
+                String model = sc.nextLine();
                 items[i] = new ElectronicKit(type, title, price, year, loanDays, model);
             }
         }
