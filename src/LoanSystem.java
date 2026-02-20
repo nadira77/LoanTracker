@@ -19,20 +19,15 @@ public class LoanSystem {
         System.out.println("Hvor mange items vil du låne?");
         int amount = sc.nextInt();
 
-        //validere brugerens input
-        if (amount < 0 || !sc.hasNextInt()) {
-            System.out.println("Du skal skrive et positivt tal");
-        }
-
         LoanItems[] items = new LoanItems[amount];
 
         for (int i = 0; i < amount; i++) {
 
             System.out.println("\nEnter Type (Book/Video/Elektronickit) ");
-            String type = sc.nextLine();
+            String type = sc.next();
 
             System.out.println("Enter Title");
-            String title = sc.nextLine();
+            String title = sc.next();
 
             System.out.print("Enter Price: ");
             double price = sc.nextDouble();
@@ -46,7 +41,7 @@ public class LoanSystem {
             //opret objekt
             if (type.equalsIgnoreCase("Book")) {
                 System.out.println("Enter Author");
-                String author = sc.nextLine();
+                String author = sc.next();
                 items[i] = new Book(type, title, price, year, loanDays, author);
             } else if (type.equalsIgnoreCase("Video")) {
                 System.out.println("Enter Runtime");
@@ -54,7 +49,7 @@ public class LoanSystem {
                 items[i] = new Video(type, title, price, year, loanDays, runTime);
             } else {
                 System.out.println("Enter model");
-                String model = sc.nextLine();
+                String model = sc.next();
                 items[i] = new ElectronicKit(type, title, price, year, loanDays, model);
             }
         }
