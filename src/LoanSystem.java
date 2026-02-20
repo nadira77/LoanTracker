@@ -43,19 +43,17 @@ public class LoanSystem {
             String year = sc.nextLine();
 
             System.out.print("Loandays");
-            String Loandays = sc.nextLine();
+            String loanDays = sc.nextLine();
             //opret objekt
             if (type.equalsIgnoreCase("Book")) {
-                items[i] = new Book(title, price, year, loandays);
+                items[i] = new Book(title, price, year, loanDays);
 
             } else if (type.equalsIgnoreCase("Video")) {
-                items[i] = new Video(title, price, year, loandays);
+                items[i] = new Video(title, price, year, loanDays);
 
             } else {
-                items[i] = new Elektronickit(title, price, year, loandays);
+                items[i] = new Elektronickit(title, price, year, loanDays);
             }
-        }
-        public abstract class LoanItems {
         }
         LoanItems[] items = new LoanItems[3];
         items[0] = new Book("Java Basics", 200, "2021", 14);
@@ -68,15 +66,15 @@ public class LoanSystem {
 
         System.out.println("\n---- After sorting ----");
         print(items);
-    }
+        sc.close();
 
         // Udskriv alle items
-    
+
         System.out.println("\n--- Lånte items ---");
         for (LoanItems item : items) {
             System.out.println(item);
         }
-        sc.close();
+    }
 
     public static void print(LoanItems[] arr) {
         for (int i = 0; i < arr.length; i++) {
@@ -85,14 +83,17 @@ public class LoanSystem {
     }
 
 
-    public static void sortByPrice (LoanSystem[]arr){
+    public static void sortByPrice(LoanItems[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
 
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j].getPrice() > arr[j + 1].getPrice()) {
 
-                    LoanSystem temp = arr[j];
+                    LoanItems temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
-                }
+            }
+        }
+    }
+}
