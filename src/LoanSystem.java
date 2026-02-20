@@ -17,16 +17,14 @@ public class LoanSystem {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Hvor mange items vil du låne?");
-
         int amount = sc.nextInt();
+
         //validere brugerens input
         if (amount < 0 || !sc.hasNextInt()) {
             System.out.println("Du skal skrive et positivt tal");
         }
 
-        LoanItems[] arr = new LoanItems[amount];
-
-        LoanItems[] items = new LoanItems[3];
+        LoanItems[] items = new LoanItems[amount];
 
         for (int i = 0; i < amount; i++) {
 
