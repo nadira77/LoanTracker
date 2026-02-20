@@ -55,9 +55,6 @@ public class LoanSystem {
                 items[i] = new ElectronicKit(title, price, year, loanDays);
             }
         }
-        items[0] = new Book("Java Basics", 200, "2021", 14);
-        items[1] = new Video("OOP tutorial", 150, "2022", 7);
-        items[2] = new ElectronicKit("Arduino Kit", 500, "2023", 30);
 
         System.out.println("---- Before sorting ----");
         println(items);
