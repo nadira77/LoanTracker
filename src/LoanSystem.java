@@ -45,17 +45,15 @@ public class LoanSystem {
             System.out.print("Loandays");
             String loanDays = sc.nextLine();
             //opret objekt
+            LoanItems[] items = new LoanItems[3];
             if (type.equalsIgnoreCase("Book")) {
                 items[i] = new Book(title, price, year, loanDays);
-
             } else if (type.equalsIgnoreCase("Video")) {
                 items[i] = new Video(title, price, year, loanDays);
-
             } else {
-                items[i] = new Elektronickit(title, price, year, loanDays);
+                items[i] = new ElectronicKit(title, price, year, loanDays);
             }
         }
-        LoanItems[] items = new LoanItems[3];
         items[0] = new Book("Java Basics", 200, "2021", 14);
         items[1] = new Video("OOP tutorial", 150, "2022", 7);
         items[2] = new ElectronicKit("Arduino Kit", 500, "2023", 30);
