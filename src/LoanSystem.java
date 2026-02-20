@@ -30,29 +30,34 @@ public class LoanSystem {
 
         for (int i = 0; i < amount; i++) {
 
-            System.out.println("\nType (Book/Video/Elektronickit) ");
+            System.out.println("\nEnter Type (Book/Video/Elektronickit) ");
             String type = sc.nextLine();
-            System.out.print("Type: ");
-            String Type = sc.nextLine();
 
-            System.out.println("Indtast Title");
+            System.out.println("Enter Title");
             String title = sc.nextLine();
 
-            System.out.print("Price: ");
+            System.out.print("Enter Price: ");
             double price = sc.nextDouble();
-            sc.nextLine();
-            System.out.print("Year: ");
-            String year = sc.nextLine();
 
-            System.out.print("Loandays");
-            String loanDays = sc.nextLine();
+            System.out.print("Enter Year: ");
+            int year = sc.nextInt();
+
+            System.out.print("Enter Loandays");
+            int loanDays = sc.nextInt();
+
             //opret objekt
             if (type.equalsIgnoreCase("Book")) {
-                items[i] = new Book(title, price, year, loanDays);
+                System.out.println("Enter Author");
+                String author = sc.nextLine();
+                items[i] = new Book(type, title, price, year, loanDays, author);
             } else if (type.equalsIgnoreCase("Video")) {
-                items[i] = new Video(title, price, year, loanDays);
+                System.out.println("Enter Runtime");
+                double runTime = sc.nextDouble();
+                items[i] = new Video(type, title, price, year, loanDays, runTime);
             } else {
-                items[i] = new ElectronicKit(title, price, year, loanDays);
+                System.out.println("Enter model");
+                String model = sc.nextLine();
+                items[i] = new ElectronicKit(type, title, price, year, loanDays, model);
             }
         }
 
