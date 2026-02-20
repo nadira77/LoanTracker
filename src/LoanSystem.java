@@ -46,13 +46,13 @@ public class LoanSystem {
             String Loandays = sc.nextLine();
             //opret objekt
             if (type.equalsIgnoreCase("Book")) {
-                items[i] = new Book(title, price, year, loanDays);
+                items[i] = new Book(title, price, year, loandays);
 
             } else if (type.equalsIgnoreCase("Video")) {
-                items[i] = new Video(title, price, year, loanDays);
+                items[i] = new Video(title, price, year, loandays);
 
             } else {
-                items[i] = new Elektronickit(title, price, year, loanDays);
+                items[i] = new Elektronickit(title, price, year, loandays);
             }
         }
         public abstract class LoanItems {
