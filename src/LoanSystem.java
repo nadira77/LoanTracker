@@ -16,12 +16,12 @@ public class LoanSystem {
         Scanner sc = new Scanner(System.in);
 
 
-        System.out.println("Hvor mange items vil du låne?");
+        System.out.println("How many items would you like to borrow?");
         int amount = 0;
         LoanItems[] items;
         if (sc.hasNextInt()) {
-            items = new LoanItems[amount];
             amount = sc.nextInt();
+            items = new LoanItems[amount];
             sc.nextLine();
 
             for (int i = 0; i < amount; i++) {
@@ -43,7 +43,13 @@ public class LoanSystem {
                 sc.nextLine();
 
                 System.out.print("Enter year: ");
-                int year = sc.nextInt();
+                int year;
+                if (sc.hasNextInt()) {
+                    year = sc.nextInt();
+                } else {
+                    year = 2000;
+                    System.out.println("You did not enter a year, defaulting to 2000");
+                }
                 sc.nextLine();
 
                 System.out.print("Enter loan days: ");
@@ -70,6 +76,7 @@ public class LoanSystem {
                     String author = sc.nextLine();
                     items[i] = new Book(type, title, price, year, loanDays, author);
                 }
+                System.out.println();
             }
 
             System.out.println("---- Before sorting ----");
