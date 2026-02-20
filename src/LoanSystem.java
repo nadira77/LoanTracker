@@ -15,55 +15,79 @@ public class LoanSystem {
 
         Scanner sc = new Scanner(System.in);
 
+
         System.out.println("Hvor mange items vil du låne?");
-        int amount = sc.nextInt();
-        sc.nextLine();
-
-        LoanItems[] items = new LoanItems[amount];
-
-        for (int i = 0; i < amount; i++) {
-
-            System.out.print("Enter type (Book/Video/Electronic Kit) ");
-            String type = sc.nextLine();
-
-            System.out.print("Enter title: ");
-            String title = sc.nextLine();
-
-            System.out.print("Enter price: ");
-            double price = sc.nextDouble();
+        int amount = 0;
+        LoanItems[] items;
+        if (sc.hasNextInt()) {
+            items = new LoanItems[amount];
+            amount = sc.nextInt();
             sc.nextLine();
 
-            System.out.print("Enter year: ");
-            int year = sc.nextInt();
-            sc.nextLine();
+            for (int i = 0; i < amount; i++) {
 
-            System.out.print("Enter loan days: ");
-            int loanDays = sc.nextInt();
-            sc.nextLine();
+                System.out.print("Enter type (Book/Video/ElectronicKit) ");
+                String type = sc.nextLine();
 
-            //opret objekt
-            if (type.equalsIgnoreCase("Book")) {
-                System.out.print("Enter author: ");
-                String author = sc.nextLine();
-                items[i] = new Book(type, title, price, year, loanDays, author);
-            } else if (type.equalsIgnoreCase("Video")) {
-                System.out.println("Enter runtime");
-                double runTime = sc.nextDouble();
+                System.out.print("Enter title: ");
+                String title = sc.nextLine();
+
+                System.out.print("Enter price: ");
+                double price;
+                if (sc.hasNextDouble()) {
+                    price = sc.nextDouble();
+                } else {
+                    price = 0;
+                    System.out.println("You did not enter a number, defaulting to price of 0");
+                }
                 sc.nextLine();
-                items[i] = new Video(type, title, price, year, loanDays, runTime);
-            } else {
-                System.out.println("Enter model");
-                String model = sc.nextLine();
-                items[i] = new ElectronicKit(type, title, price, year, loanDays, model);
+
+                System.out.print("Enter year: ");
+                int year = sc.nextInt();
+                sc.nextLine();
+
+                System.out.print("Enter loan days: ");
+                int loanDays = sc.nextInt();
+                sc.nextLine();
+
+                //opret objekt
+                if (type.equalsIgnoreCase("Book")) {
+                    System.out.print("Enter author: ");
+                    String author = sc.nextLine();
+                    items[i] = new Book(type, title, price, year, loanDays, author);
+                } else if (type.equalsIgnoreCase("Video")) {
+                    System.out.println("Enter runtime");
+                    double runTime = sc.nextDouble();
+                    sc.nextLine();
+                    items[i] = new Video(type, title, price, year, loanDays, runTime);
+                } else if (type.equalsIgnoreCase("ElectronicKit")) {
+                    System.out.println("Enter model");
+                    String model = sc.nextLine();
+                    items[i] = new ElectronicKit(type, title, price, year, loanDays, model);
+                } else {
+                    System.out.println("You did not choose a valid type of Loan Item, defaulting to Book");
+                    System.out.print("Enter author: ");
+                    String author = sc.nextLine();
+                    items[i] = new Book(type, title, price, year, loanDays, author);
+                }
             }
+
+            System.out.println("---- Before sorting ----");
+            print(items);
+            sortByPrice(items);
+
+            System.out.println("\n---- After sorting ----");
+            print(items);
+
+
+        } else {
+            items = new LoanItems[0];
+            System.out.println("You did not enter a number, terminating program");
         }
 
-        System.out.println("---- Before sorting ----");
-        print(items);
-        sortByPrice(items);
 
-        System.out.println("\n---- After sorting ----");
-        print(items);
+
+
 
         sc.close();
 
