@@ -28,6 +28,10 @@ public class LoanSystem {
 
                 System.out.print("Enter type (Book/Video/ElectronicKit) ");
                 String type = sc.nextLine();
+                if (!(type.equalsIgnoreCase("book") || type.equalsIgnoreCase("video") || type.equalsIgnoreCase("electronickit"))) {
+                    System.out.println("Invalid type entered, defaulting to Book");
+                    type = "Book";
+                }
 
                 System.out.print("Enter title: ");
                 String title = sc.nextLine();
@@ -53,7 +57,13 @@ public class LoanSystem {
                 sc.nextLine();
 
                 System.out.print("Enter loan days: ");
-                int loanDays = sc.nextInt();
+                int loanDays;
+                if (sc.hasNextInt()) {
+                    loanDays = sc.nextInt();
+                } else {
+                    System.out.println("You didn't enter a valid number. Defaulting to 3 loan days");
+                    loanDays = 3;
+                }
                 sc.nextLine();
 
                 //opret objekt
@@ -63,7 +73,13 @@ public class LoanSystem {
                     items[i] = new Book(type, title, price, year, loanDays, author);
                 } else if (type.equalsIgnoreCase("Video")) {
                     System.out.println("Enter runtime");
-                    double runTime = sc.nextDouble();
+                    double runTime;
+                    if (sc.hasNextDouble()) {
+                        runTime = sc.nextDouble();
+                    } else {
+                        System.out.println("Invalid Runtime entered. Defaulting to 2 hours");
+                        runTime = 2;
+                    }
                     sc.nextLine();
                     items[i] = new Video(type, title, price, year, loanDays, runTime);
                 } else if (type.equalsIgnoreCase("ElectronicKit")) {
@@ -91,9 +107,6 @@ public class LoanSystem {
             items = new LoanItems[0];
             System.out.println("You did not enter a number, terminating program");
         }
-
-
-
 
 
         sc.close();
