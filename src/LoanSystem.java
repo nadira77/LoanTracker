@@ -26,6 +26,8 @@ public class LoanSystem {
 
         LoanItems[] arr = new LoanItems[amount];
 
+        LoanItems[] items = new LoanItems[3];
+
         for (int i = 0; i < amount; i++) {
 
             System.out.println("\nType (Book/Video/Elektronickit) ");
@@ -45,7 +47,6 @@ public class LoanSystem {
             System.out.print("Loandays");
             String loanDays = sc.nextLine();
             //opret objekt
-            LoanItems[] items = new LoanItems[3];
             if (type.equalsIgnoreCase("Book")) {
                 items[i] = new Book(title, price, year, loanDays);
             } else if (type.equalsIgnoreCase("Video")) {
