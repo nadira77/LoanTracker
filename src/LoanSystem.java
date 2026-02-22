@@ -72,7 +72,7 @@ public class LoanSystem {
                     String author = sc.nextLine();
                     items[i] = new Book(type, title, price, year, loanDays, author);
                 } else if (type.equalsIgnoreCase("Video")) {
-                    System.out.println("Enter runtime");
+                    System.out.print("Enter runtime: ");
                     double runTime;
                     if (sc.hasNextDouble()) {
                         runTime = sc.nextDouble();
@@ -83,7 +83,7 @@ public class LoanSystem {
                     sc.nextLine();
                     items[i] = new Video(type, title, price, year, loanDays, runTime);
                 } else if (type.equalsIgnoreCase("ElectronicKit")) {
-                    System.out.println("Enter model");
+                    System.out.print("Enter model: ");
                     String model = sc.nextLine();
                     items[i] = new ElectronicKit(type, title, price, year, loanDays, model);
                 } else {
