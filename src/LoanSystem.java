@@ -21,86 +21,94 @@ public class LoanSystem {
         LoanItems[] items;
         if (sc.hasNextInt()) {
             amount = sc.nextInt();
-            items = new LoanItems[amount];
-            sc.nextLine();
-
-            for (int i = 0; i < amount; i++) {
-
-                System.out.print("Enter type (Book/Video/ElectronicKit) ");
-                String type = sc.nextLine();
-                if (!(type.equalsIgnoreCase("book") || type.equalsIgnoreCase("video") || type.equalsIgnoreCase("electronickit"))) {
-                    System.out.println("Invalid type entered, defaulting to Book");
-                    type = "Book";
-                }
-
-                System.out.print("Enter title: ");
-                String title = sc.nextLine();
-
-                System.out.print("Enter price: ");
-                double price;
-                if (sc.hasNextDouble()) {
-                    price = sc.nextDouble();
-                } else {
-                    price = 0;
-                    System.out.println("You did not enter a number, defaulting to price of 0");
-                }
+            if (amount <= 0) {
+                amount = 0;
+                System.out.println("You entered an invalid value");
+            } else {
+                items = new LoanItems[amount];
                 sc.nextLine();
 
-                System.out.print("Enter year: ");
-                int year;
-                if (sc.hasNextInt()) {
-                    year = sc.nextInt();
-                } else {
-                    year = 2000;
-                    System.out.println("You did not enter a year, defaulting to 2000");
-                }
-                sc.nextLine();
+                for (int i = 0; i < amount; i++) {
 
-                System.out.print("Enter loan days: ");
-                int loanDays;
-                if (sc.hasNextInt()) {
-                    loanDays = sc.nextInt();
-                } else {
-                    System.out.println("You didn't enter a valid number. Defaulting to 3 loan days");
-                    loanDays = 3;
-                }
-                sc.nextLine();
+                    int itemNum = i + 1;
+                    System.out.println("Enter details for item number " + itemNum);
 
-                //opret objekt
-                if (type.equalsIgnoreCase("Book")) {
-                    System.out.print("Enter author: ");
-                    String author = sc.nextLine();
-                    items[i] = new Book(type, title, price, year, loanDays, author);
-                } else if (type.equalsIgnoreCase("Video")) {
-                    System.out.print("Enter runtime: ");
-                    double runTime;
+                    System.out.print("Enter type (Book/Video/ElectronicKit) ");
+                    String type = sc.nextLine();
+                    if (!(type.equalsIgnoreCase("book") || type.equalsIgnoreCase("video") || type.equalsIgnoreCase("electronickit"))) {
+                        System.out.println("Invalid type entered, defaulting to Book");
+                        type = "Book";
+                    }
+
+                    System.out.print("Enter title: ");
+                    String title = sc.nextLine();
+
+                    System.out.print("Enter price: ");
+                    double price;
                     if (sc.hasNextDouble()) {
-                        runTime = sc.nextDouble();
+                        price = sc.nextDouble();
                     } else {
-                        System.out.println("Invalid Runtime entered. Defaulting to 2 hours");
-                        runTime = 2;
+                        price = 0;
+                        System.out.println("You did not enter a number, defaulting to price of 0");
                     }
                     sc.nextLine();
-                    items[i] = new Video(type, title, price, year, loanDays, runTime);
-                } else if (type.equalsIgnoreCase("ElectronicKit")) {
-                    System.out.print("Enter model: ");
-                    String model = sc.nextLine();
-                    items[i] = new ElectronicKit(type, title, price, year, loanDays, model);
-                } else {
-                    System.out.println("You did not choose a valid type of Loan Item, defaulting to Book");
-                    System.out.print("Enter author: ");
-                    String author = sc.nextLine();
-                    items[i] = new Book(type, title, price, year, loanDays, author);
+
+                    System.out.print("Enter year: ");
+                    int year;
+                    if (sc.hasNextInt()) {
+                        year = sc.nextInt();
+                    } else {
+                        year = 2000;
+                        System.out.println("You did not enter a year, defaulting to 2000");
+                    }
+                    sc.nextLine();
+
+                    System.out.print("Enter loan days: ");
+                    int loanDays;
+                    if (sc.hasNextInt()) {
+                        loanDays = sc.nextInt();
+                    } else {
+                        System.out.println("You didn't enter a valid number. Defaulting to 3 loan days");
+                        loanDays = 3;
+                    }
+                    sc.nextLine();
+
+                    //opret objekt
+                    if (type.equalsIgnoreCase("Book")) {
+                        System.out.print("Enter author: ");
+                        String author = sc.nextLine();
+                        items[i] = new Book(type, title, price, year, loanDays, author);
+                    } else if (type.equalsIgnoreCase("Video")) {
+                        System.out.print("Enter runtime: ");
+                        double runTime;
+                        if (sc.hasNextDouble()) {
+                            runTime = sc.nextDouble();
+                        } else {
+                            System.out.println("Invalid Runtime entered. Defaulting to 2 hours");
+                            runTime = 2;
+                        }
+                        sc.nextLine();
+                        items[i] = new Video(type, title, price, year, loanDays, runTime);
+                    } else if (type.equalsIgnoreCase("ElectronicKit")) {
+                        System.out.print("Enter model: ");
+                        String model = sc.nextLine();
+                        items[i] = new ElectronicKit(type, title, price, year, loanDays, model);
+                    } else {
+                        System.out.println("You did not choose a valid type of Loan Item, defaulting to Book");
+                        System.out.print("Enter author: ");
+                        String author = sc.nextLine();
+                        items[i] = new Book(type, title, price, year, loanDays, author);
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+
+                System.out.println("---- Before sorting ----");
+                print(items);
+                sortByPrice(items);
+
+                System.out.println("\n---- After sorting ----");
+                print(items);
             }
-
-            System.out.println("---- Before sorting ----");
-            print(items);
-            sortByPrice(items);
-
-            System.out.println("\n---- After sorting ----");
-            print(items);
 
 
         } else {
