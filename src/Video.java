@@ -7,10 +7,6 @@ public class Video extends LoanItems {
         this.runtime = runtime;
     }
 
-    @Override
-    public String getDescription() {
-        return this.getType() + ": " + this.getTitle() + "(" + this.getYear() + ") runtime: " + runtime + " at price: $" + this.getPrice() + ". Days loaned: " + this.getLoandays();
-    }
 
     @Override
     public String toString() {

@@ -7,10 +7,6 @@ public class Book extends LoanItems {
         this.author = author;
     }
 
-    @Override
-    public String getDescription() {
-        return this.getType() + ": " + this.getTitle() + "(" + this.getYear() + ") by: " + author + " at price: $" + this.getPrice() + ". Days loaned: " + this.getLoandays();
-    }
 
     // Metoden fra LoanItems bliver genbrugt her
     @Override

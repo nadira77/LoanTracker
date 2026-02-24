@@ -65,8 +65,6 @@ public abstract class LoanItems {
 
     //Abstrakte metoder
 
-    public abstract String getDescription();
-
     public abstract double feeAmount();
 
     //toString() metode

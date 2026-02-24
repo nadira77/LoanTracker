@@ -7,10 +7,6 @@ public class ElectronicKit extends LoanItems {
         this.model = model;
     }
 
-    @Override
-    public String getDescription() {
-        return this.getType() + ": " + this.getTitle() + "(" + this.getYear() + ") model: " + model + " at price: $" + this.getPrice() + ". Days loaned: " + this.getLoandays();
-    }
 
     @Override
     public double feeAmount() {
